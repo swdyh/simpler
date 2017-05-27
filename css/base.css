@@ -1,0 +1,10 @@
+.sidebar, .sidebar .sideview, .toolbar, .tagbar, .footer { display: none; }
+.note { left: 0 !important; top: 20px !important; right: 0 !important; }
+.wrapper { bottom: 0 !important;}
+.sidebar .notes { top: 22px !important; }
+.statusbar { padding-top: 0 !important; }
+.note #txtarea { padding: 0px 20px 20px 25px !important; }
+.wrapper, .wrapper .app { min-width: initial !important; }
+/* body, .note #txtarea { font-family: YuGothic !important; } */
+.app { border-bottom: 0 !important; }
+.notes li { padding: 7px 0 7px 0 !important; }

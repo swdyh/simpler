@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <style>
+    body {
+      background-color: #fff;
+      margin: 0;
+    }
+    webview {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      /*  width: 1px; */
+    }
+    webview.hide {
+      flex: 0 1;
+      width: 0px;
+      height: 0px;
+    }
+  </style>
+  <body>
+    <webview src="https://app.simplenote.com/" class="hide"></webview>
+    <script src="webview.js"></script>
+  </body>
+</html>
