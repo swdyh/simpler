@@ -1,0 +1,24 @@
+body, .note #txtarea { color: #333 !important; }
+body, .app {
+    background-color: #fff !important;
+    color: #333 !important;
+}
+.notes li {
+    text-shadow: none !important;
+}
+.notes li .note-preview-title {
+    color: #333 !important;
+}
+.notes li .note-preview-line {
+    color: #999 !important;
+}
+.sidebar {
+    border-right: 1px solid #f0f0f0 !important;
+}
+.notes li:hover {
+    background-color: #fafafa !important;
+}
+.notes li.selected {
+    background: #eef3f8 !important;
+    background-color: #eef3f8 !important;
+}

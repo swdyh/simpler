@@ -6,7 +6,10 @@ body, .app {
 .notes li {
     text-shadow: none !important;
 }
-.notes li .note-preview-title, .notes li .note-preview-line {
+.notes li .note-preview-title {
+    color: #f0f0f0 !important;
+}
+.notes li .note-preview-line {
     color: #f0f0f0 !important;
 }
 .sidebar {

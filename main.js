@@ -81,7 +81,7 @@ function setupMenu() {
                 },
                 {
                     label: 'Theme', submenu: [
-                        { label: 'Default' },
+                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("insertCSS('theme_default')") } },
                         { label: 'Night', click () { mainWindow.webContents.executeJavaScript("insertCSS('theme_night')") } }
                     ]
                 },
