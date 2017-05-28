@@ -76,7 +76,7 @@ function setupMenu() {
                         { label: 'Default', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_default')") } },
                         { label: 'YuGothic', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_yugothic')") } },
                         { label: 'Serif', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_serif')") } },
-                        { label: 'SourceHanSans', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_source_han_sans')") } }
+                        { label: 'Menlo', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_menlo')") } }
                     ]
                 },
                 {
