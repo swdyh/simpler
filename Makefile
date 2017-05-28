@@ -1,21 +1,25 @@
-NAME = SimplenoteElectro
-APP = $(NAME).app
-ICONSET = icon.iconset
+.DEFAULT_GOAL := build
+NAME := SimplenoteElectro
+APP := $(NAME).app
+ICONSET := icon.iconset
+ARCH := x64
+$(eval APP_VERSION := $(shell ruby -rjson -e 'puts JSON.parse(File.read("package.json"))["version"]'))
+$(eval ELECTRON_VERSION := $(shell electron -v | sed s/v//g ))
 
 build:
-	electron-packager . $(NAME) --platform=darwin --arch=x64  --electronVersion 1.6.6 --icon=icon/icon.icns --overwrite
-	rm -rf $(APP)
-	mv $(NAME)-darwin-x64/$(APP) .
-	rm -rf $(NAME)-darwin-x64
-	echo create $(APP)
+	rm -rf packages/$(APP_VERSION)/darwin-x64/$(APP)
+	electron-packager . $(NAME) --platform=darwin --arch=x64  --electronVersion $(ELECTRON_VERSION) --icon=icon/icon.icns --overwrite
+	mkdir -p packages/$(APP_VERSION)/darwin-x64/
+	mv $(NAME)-darwin-x64/$(APP) packages/$(APP_VERSION)/darwin-x64/$(APP)
+	rm -rf  $(NAME)-darwin-x64
+	echo create packages/$(APP_VERSION)/darwin-x64/$(APP)
 dev:
-	PWD=`pwd`
-	osascript -l JavaScript -e "Application('Terminal').doScript('cd $(PWD) && electron .')"
-	# electron .
+	$(eval dir := $(shell pwd))
+	osascript -l JavaScript -e "Application('Terminal').doScript('cd $(dir) && electron .')"
 run: build
-	open $(APP)
+	open packages/$(APP_VERSION)/darwin-x64/$(APP)
 clean:
-	rm -rf $(APP)
+	rm -rf packages/$(APP_VERSION)
 icns:
 	rm -rf $(ICONSET)
 	mkdir $(ICONSET)
