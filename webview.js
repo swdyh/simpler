@@ -10,8 +10,10 @@ let webview
 onload = () => {
     webview = document.querySelector('webview')
     const loadstop = () => {
-        webview.insertCSS(css.base)
-        setTimeout(() => { webview.classList.remove('hide') }, 100) 
+        if (webview.getURL() == 'https://app.simplenote.com/') {
+            webview.insertCSS(css.base)
+        }
+        setTimeout(() => { webview.classList.remove('hide') }, 100)
     }
     webview.addEventListener('dom-ready', loadstop)
     window.addEventListener('focus', () => webview.focus())
