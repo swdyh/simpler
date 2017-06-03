@@ -5,8 +5,6 @@ const path = require('path')
 const url = require('url')
 let mainWindow
 
-console.log(app.getAppPath())
-
 function createWindow() {
     mainWindow = new BrowserWindow({ width: 950, height: 600,
                                      titleBarStyle: 'hidden' })
