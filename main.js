@@ -96,8 +96,9 @@ function setupMenu() {
                     accelerator: 'CmdOrCtrl+T', // TODO
                 },
                 {
-                    label: 'ChangeFont default',
-                    click () { mainWindow.webContents.executeJavaScript("changeFont('-apple-system')") }
+                    label: 'Sign Out',
+                    click () {
+                        mainWindow.webContents.executeJavaScript("signout()") }
                 },
                 {
                     label: 'ChangeFont seif',

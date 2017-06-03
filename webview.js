@@ -29,3 +29,6 @@ let toggle = () => {
     webview.insertCSS(showSidebar ? css.hide_sidebar : css.show_sidebar)
     showSidebar = !showSidebar
 }
+let signout = () => {
+    webview.executeJavaScript("document.querySelector('#signoutform').submit()")
+}
