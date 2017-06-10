@@ -11,9 +11,7 @@ body, .app { background-color: #002b36 !important; }
 .sidebar { border-right: 1px solid #073642 !important; }
 
 /* sidebar selected/hover background */
-.notes li:hover {
-    background-color: #073642 !important;
-}
+.notes li:hover { background-color: #073642 !important; }
 .notes li.selected {
     background: #073642 !important;
     background-color: #073642 !important;
