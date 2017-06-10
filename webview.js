@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const {ipcRenderer} = require('electron')
 
 const css = fs.readdirSync(path.join(__dirname, 'css')).reduce((r, i) => {
     var f = path.join(__dirname, 'css', i)
@@ -23,6 +24,10 @@ onload = () => {
     }
     webview.addEventListener('dom-ready', loadstop)
     window.addEventListener('focus', () => webview.focus())
+
+    ipcRenderer.on('open-dev-tool', function() {
+        document.querySelector('webview').openDevTools()
+    })
 }
 let updateFont = (font) => {
     if (css[font]) {

@@ -46,17 +46,7 @@ function setupMenu() {
                 {role: 'zoomin'},
                 {role: 'zoomout'},
                 {type: 'separator'},
-                {role: 'togglefullscreen'},
-                {
-                    label: 'OpenDevTool (webview)',
-                    click () { mainWindow.webContents.executeJavaScript("document.querySelector('webview').openDevTools()") },
-                    accelerator: 'Alt+Cmd+I'
-                },
-                {
-                    label: 'OpenDevTool (main)',
-                    click () { mainWindow.openDevTools() },
-                    accelerator: 'Alt+Cmd+J'
-                }
+                {role: 'togglefullscreen'}
             ]
         },
         {
@@ -98,6 +88,18 @@ function setupMenu() {
                     label: 'Sign Out',
                     click () {
                         mainWindow.webContents.executeJavaScript("signout()") }
+                },
+                {
+                    label: 'OpenDevTool (webview)',
+                    click () {
+                        mainWindow.webContents.send('open-dev-tool')
+                    },
+                    accelerator: 'Alt+Cmd+I'
+                },
+                {
+                    label: 'OpenDevTool',
+                    click () { mainWindow.openDevTools() },
+                    accelerator: 'Alt+Cmd+J'
                 }
             ]
         }
