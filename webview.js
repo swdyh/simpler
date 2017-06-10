@@ -12,18 +12,31 @@ onload = () => {
     const loadstop = () => {
         if (webview.getURL() == 'https://app.simplenote.com/') {
             webview.insertCSS(css.base)
+            if (localStorage.configFont) {
+                webview.insertCSS(css[localStorage.configFont])
+            }
+            if (localStorage.configTheme) {
+                webview.insertCSS(css[localStorage.configTheme])
+            }
         }
         setTimeout(() => { webview.classList.remove('hide') }, 100)
     }
     webview.addEventListener('dom-ready', loadstop)
     window.addEventListener('focus', () => webview.focus())
 }
-let changeFont = (fontName) => {
-    console.log('changeFont')
-    webview.insertCSS('.note #txtarea { font-family: "' + fontName + '" !important; }')
+let updateFont = (font) => {
+    if (css[font]) {
+        webview.insertCSS(css[font])
+        localStorage.configFont = font
+    }
+}
+let updateTheme = (theme) => {
+    if (css[theme]) {
+        webview.insertCSS(css[theme])
+        localStorage.configTheme = theme
+    }
 }
 let insertCSS = (cssName) => {
-    console.log('insertCSS')
     webview.insertCSS(css[cssName] || '')
 }
 let showSidebar = false

@@ -71,16 +71,16 @@ function setupMenu() {
             submenu: [
                 {
                     label: 'Font', submenu: [
-                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_default')") } },
-                        { label: 'YuGothic', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_yugothic')") } },
-                        { label: 'Serif', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_serif')") } },
-                        { label: 'Menlo', click () { mainWindow.webContents.executeJavaScript("insertCSS('font_menlo')") } }
+                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("updateFont('font_default')") } },
+                        { label: 'YuGothic', click () { mainWindow.webContents.executeJavaScript("updateFont('font_yugothic')") } },
+                        { label: 'Serif', click () { mainWindow.webContents.executeJavaScript("updateFont('font_serif')") } },
+                        { label: 'Menlo', click () { mainWindow.webContents.executeJavaScript("updateFont('font_menlo')") } }
                     ]
                 },
                 {
                     label: 'Theme', submenu: [
-                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("insertCSS('theme_default')") } },
-                        { label: 'Night', click () { mainWindow.webContents.executeJavaScript("insertCSS('theme_night')") } }
+                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("updateThemeCSS('theme_default')") } },
+                        { label: 'Night', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_night')") } }
                     ]
                 },
             ]
@@ -97,17 +97,6 @@ function setupMenu() {
                     label: 'Sign Out',
                     click () {
                         mainWindow.webContents.executeJavaScript("signout()") }
-                },
-                {
-                    label: 'ChangeFont seif',
-                    click () {
-                        mainWindow.webContents.executeJavaScript("insertCSS('font_serif')")
-
-                    }
-                },
-                {
-                    label: 'ChangeFont Yu Gothic',
-                    click () { mainWindow.webContents.executeJavaScript("changeFont('YuGothic')") }
                 }
             ]
         }
