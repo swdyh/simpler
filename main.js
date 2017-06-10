@@ -79,8 +79,9 @@ function setupMenu() {
                 },
                 {
                     label: 'Theme', submenu: [
-                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("updateThemeCSS('theme_default')") } },
-                        { label: 'Night', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_night')") } }
+                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_default')") } },
+                        { label: 'Night', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_night')") } },
+                        { label: 'Solarized', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_solarized')") } }
                     ]
                 },
             ]

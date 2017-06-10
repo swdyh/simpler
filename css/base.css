@@ -25,3 +25,6 @@ div.note #txtarea { padding: 10px 2.5em 50px 2.5em; }
 
 /* fix sidebar padding */
 ul.notes li { padding: 7px 0 7px 0; }
+
+/* remove text shadow */
+ul.notes li { text-shadow: none; }
