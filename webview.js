@@ -24,10 +24,7 @@ onload = () => {
     }
     webview.addEventListener('dom-ready', loadstop)
     window.addEventListener('focus', () => webview.focus())
-
-    ipcRenderer.on('open-dev-tool', function() {
-        document.querySelector('webview').openDevTools()
-    })
+    ipcRenderer.on('open-dev-tool', () => webview.openDevTools())
 }
 let updateFont = (font) => {
     if (css[font]) {

@@ -6,16 +6,17 @@ const url = require('url')
 let mainWindow
 
 function createWindow() {
-    mainWindow = new BrowserWindow({ width: 950, height: 600,
-                                     titleBarStyle: 'hidden' })
+    mainWindow = new BrowserWindow({
+        width: 950,
+        height: 600,
+        titleBarStyle: 'hidden'
+    })
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file:',
         slashes: true
     }))
-    mainWindow.on('closed', function () {
-        mainWindow = null
-    })
+    mainWindow.on('closed', () => mainWindow = null)
 }
 
 function setupMenu() {
@@ -130,19 +131,15 @@ function setupMenu() {
     Menu.setApplicationMenu(Menu.buildFromTemplate(template))
 }
 
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
+app.on('window-all-closed', () => app.quit())
 
-app.on('activate', function () {
-  if (mainWindow === null) {
+app.on('activate', () => {
+    if (mainWindow === null) {
       createWindow()
   }
 })
 
-app.on('ready', function() {
+app.on('ready', () => {
     createWindow()
     setupMenu()
 })
