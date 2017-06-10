@@ -19,6 +19,32 @@ function createWindow() {
     mainWindow.on('closed', () => mainWindow = null)
 }
 
+function fontSubMenu() {
+    const fonts = ['Default', 'Serif', 'YuGothic', 'Menlo']
+    return fonts.map((fontName) => {
+        return {
+            label: fontName,
+            click () {
+                mainWindow.webContents
+                    .send('update-font', 'font_' + fontName.toLowerCase())
+            }
+        }
+    })
+}
+
+function themeSubMenu() {
+    const themes = ['Default', 'Night', 'Solarized']
+    return themes.map((themeName) => {
+        return {
+            label: themeName,
+            click () {
+                mainWindow.webContents
+                    .send('update-theme', 'theme_' + themeName.toLowerCase())
+            }
+        }
+    })
+}
+
 function setupMenu() {
     const Menu = electron.Menu
     const template = [
@@ -42,6 +68,11 @@ function setupMenu() {
                 {role: 'reload'},
                 {role: 'forcereload'},
                 {role: 'toggledevtools'},
+                {
+                    label: 'Toggle Developer Tools (Webview)',
+                    click () { mainWindow.webContents.send('open-dev-tool') },
+                    accelerator: 'Alt+Cmd+J'
+                },
                 {type: 'separator'},
                 {role: 'resetzoom'},
                 {role: 'zoomin'},
@@ -60,47 +91,24 @@ function setupMenu() {
         {
             label: 'Style',
             submenu: [
-                {
-                    label: 'Font', submenu: [
-                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("updateFont('font_default')") } },
-                        { label: 'YuGothic', click () { mainWindow.webContents.executeJavaScript("updateFont('font_yugothic')") } },
-                        { label: 'Serif', click () { mainWindow.webContents.executeJavaScript("updateFont('font_serif')") } },
-                        { label: 'Menlo', click () { mainWindow.webContents.executeJavaScript("updateFont('font_menlo')") } }
-                    ]
-                },
-                {
-                    label: 'Theme', submenu: [
-                        { label: 'Default', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_default')") } },
-                        { label: 'Night', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_night')") } },
-                        { label: 'Solarized', click () { mainWindow.webContents.executeJavaScript("updateTheme('theme_solarized')") } }
-                    ]
-                },
+                { label: 'Font', submenu: fontSubMenu() },
+                { label: 'Theme', submenu: themeSubMenu() }
             ]
         },
         {
             label: 'Tool',
             submenu: [
                 {
-                    label: 'ToggleSideMenu',
-                    click () { mainWindow.webContents.executeJavaScript("toggle()") },
-                    accelerator: 'CmdOrCtrl+T', // TODO
+                    label: 'Toggle SideMenu',
+                    click () {
+                        mainWindow.webContents.send('toggle')
+                    },
+                    accelerator: 'Cmd+B',
                 },
                 {
                     label: 'Sign Out',
                     click () {
                         mainWindow.webContents.executeJavaScript("signout()") }
-                },
-                {
-                    label: 'OpenDevTool (webview)',
-                    click () {
-                        mainWindow.webContents.send('open-dev-tool')
-                    },
-                    accelerator: 'Alt+Cmd+I'
-                },
-                {
-                    label: 'OpenDevTool',
-                    click () { mainWindow.openDevTools() },
-                    accelerator: 'Alt+Cmd+J'
                 }
             ]
         }
