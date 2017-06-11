@@ -132,15 +132,12 @@ function setupMenu() {
             submenu: [
                 {
                     label: 'Toggle SideMenu',
-                    click () {
-                        mainWindow.webContents.send('toggle')
-                    },
-                    accelerator: 'Cmd+B',
+                    click () { mainWindow.webContents.send('toggle') },
+                    accelerator: 'Cmd+B'
                 },
                 {
                     label: 'Sign Out',
-                    click () {
-                        mainWindow.webContents.executeJavaScript("signout()") }
+                    click () { mainWindow.webContents.send('signout') }
                 }
             ]
         }
