@@ -3,6 +3,7 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
+const ipcMain = electron.ipcMain
 let mainWindow
 
 function createWindow() {
@@ -17,17 +18,48 @@ function createWindow() {
         slashes: true
     }))
     mainWindow.on('closed', () => mainWindow = null)
+    ipcMain.on('initial-config', (event, arg) => {
+        checkMenu(arg.font)
+        checkMenu(arg.theme)
+    })
+}
+
+
+function findMenu(id, menu) {
+    if (menu && menu.id == id) {
+        return menu
+    }
+    let items = []
+    if (!menu) {
+        items = electron.Menu.getApplicationMenu().items
+    }
+    else if (menu.submenu && menu.submenu.items) {
+        items = menu.submenu.items
+    }
+    for (var i = 0; i < items.length; i++) {
+        let r = findMenu(id, items[i])
+        if (r) {
+            return r
+        }
+    }
+}
+
+function checkMenu(id) {
+    let menu = id && findMenu(id)
+    if (menu) {
+        menu.checked = true
+    }
 }
 
 function fontSubMenu() {
     const fonts = ['Default', 'Serif', 'YuGothic', 'Menlo']
     return fonts.map((fontName) => {
+        const id = 'font_' + fontName.toLowerCase()
         return {
+            id: id,
             label: fontName,
-            click () {
-                mainWindow.webContents
-                    .send('update-font', 'font_' + fontName.toLowerCase())
-            }
+            type: 'radio',
+            click () { mainWindow.webContents.send('update-font', id) }
         }
     })
 }
@@ -35,12 +67,12 @@ function fontSubMenu() {
 function themeSubMenu() {
     const themes = ['Default', 'Night', 'Solarized']
     return themes.map((themeName) => {
+        const id = 'theme_' + themeName.toLowerCase()
         return {
+            id: id,
             label: themeName,
-            click () {
-                mainWindow.webContents
-                    .send('update-theme', 'theme_' + themeName.toLowerCase())
-            }
+            type: 'radio',
+            click () { mainWindow.webContents.send('update-theme', id) }
         }
     })
 }

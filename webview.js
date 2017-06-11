@@ -53,4 +53,8 @@ onload = () => {
     ipcRenderer.on('toggle', toggle)
     ipcRenderer.on('update-font', (event, arg) => updateFont(arg))
     ipcRenderer.on('update-theme', (event, arg) => updateTheme(arg))
+    ipcRenderer.send('initial-config', {
+        font: localStorage.configFont,
+        theme: localStorage.configTheme
+    })
 }
