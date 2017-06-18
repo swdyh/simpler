@@ -12,7 +12,7 @@ div.wrapper, div.wrapper div.app { min-width: initial; }
 .sidebar, .sidebar .sideview, .toolbar, .tagbar { display: none; }
 
 /* note position */
-div.note { left: 0; top: 20px; right: 208px; }
+div.note { left: 0; top: 20px; right: 0px; }
 
 /* fix sidebar top position */
 div.sidebar ul.notes { top: 22px; }
