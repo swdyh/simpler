@@ -136,6 +136,10 @@ function setupMenu() {
                     accelerator: 'Cmd+B'
                 },
                 {
+                    label: 'Add Note',
+                    click () { mainWindow.webContents.send('addnote') }
+                },
+                {
                     label: 'Sign Out',
                     click () { mainWindow.webContents.send('signout') }
                 }

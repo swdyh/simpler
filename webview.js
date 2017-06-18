@@ -50,6 +50,9 @@ onload = () => {
     window.addEventListener('focus', () => webview.focus())
     ipcRenderer.on('open-dev-tool', () => webview.openDevTools())
     ipcRenderer.on('signout', signout)
+    ipcRenderer.on('addnote', () => {
+        webview.executeJavaScript("document.querySelector('a.add').click()")
+    })
     ipcRenderer.on('toggle', toggle)
     ipcRenderer.on('update-font', (event, arg) => updateFont(arg))
     ipcRenderer.on('update-theme', (event, arg) => updateTheme(arg))
