@@ -1,1 +1,1 @@
-body, .note textarea#txtarea { font-family: YuGothic; }
+body, .note #txtarea { font-family: YuGothic !important; }
