@@ -1,2 +1,2 @@
-.sidebar { display: block !important; }
-.note { left: 361px !important; }
+div.sidebar { display: block; }
+div.note { left: 361px; }

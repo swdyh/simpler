@@ -1,2 +1,2 @@
-.sidebar { display: none !important; }
-.note { left: 0 !important; }
+div.sidebar { display: none; }
+div.note { left: 0; }
