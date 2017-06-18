@@ -53,6 +53,9 @@ onload = () => {
     ipcRenderer.on('addnote', () => {
         webview.executeJavaScript("document.querySelector('a.add').click()")
     })
+    ipcRenderer.on('deletenote', () => {
+        webview.executeJavaScript("document.querySelector('a.delete').click()")
+    })
     ipcRenderer.on('toggle', toggle)
     ipcRenderer.on('update-font', (event, arg) => updateFont(arg))
     ipcRenderer.on('update-theme', (event, arg) => updateTheme(arg))

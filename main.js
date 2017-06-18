@@ -140,6 +140,10 @@ function setupMenu() {
                     click () { mainWindow.webContents.send('addnote') }
                 },
                 {
+                    label: 'Delete Note',
+                    click () { mainWindow.webContents.send('deletenote') }
+                },
+                {
                     label: 'Sign Out',
                     click () { mainWindow.webContents.send('signout') }
                 }
