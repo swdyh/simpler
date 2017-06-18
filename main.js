@@ -143,6 +143,7 @@ function setupMenu() {
                     label: 'Delete Note',
                     click () { mainWindow.webContents.send('deletenote') }
                 },
+                {type: 'separator'},
                 {
                     label: 'Sign Out',
                     click () { mainWindow.webContents.send('signout') }
