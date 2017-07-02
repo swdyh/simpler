@@ -3,6 +3,9 @@ const path = require('path')
 const {ipcRenderer} = require('electron')
 
 let webview
+let searchText
+let serchForm
+
 const css = fs.readdirSync(path.join(__dirname, 'css')).reduce((r, i) => {
     var f = path.join(__dirname, 'css', i)
     r[i.split('.css')[0]] = fs.readFileSync(f).toString('UTF-8')
@@ -30,6 +33,14 @@ let toggle = () => {
 }
 let signout = () => {
     webview.executeJavaScript("document.querySelector('#signoutform').submit()")
+}
+let search = () => {
+    searchForm.style.visibility = 'visible'
+    searchText.focus()
+}
+let searchStop = () => {
+    webview.stopFindInPage('clearSelection')
+    searchForm.style.visibility = 'hidden'
 }
 
 onload = () => {
@@ -59,8 +70,20 @@ onload = () => {
     ipcRenderer.on('toggle', toggle)
     ipcRenderer.on('update-font', (event, arg) => updateFont(arg))
     ipcRenderer.on('update-theme', (event, arg) => updateTheme(arg))
+    ipcRenderer.on('search', (event, arg) => search(arg))
+    ipcRenderer.on('search-stop', (event, arg) => searchStop(arg))
+
     ipcRenderer.send('initial-config', {
         font: localStorage.configFont,
         theme: localStorage.configTheme
     })
+
+
+    searchForm = document.querySelector('#search-form')
+    searchForm.addEventListener('submit', (ev) => {
+        console.log('sub')
+        ev.preventDefault()
+        webview.findInPage(searchText.value)
+    })
+    searchText = document.querySelector('#search-text')
 }

@@ -136,12 +136,26 @@ function setupMenu() {
                     accelerator: 'Cmd+B'
                 },
                 {
-                    label: 'Add Note',
+                    label: 'New Note',
                     click () { mainWindow.webContents.send('addnote') }
                 },
                 {
                     label: 'Delete Note',
                     click () { mainWindow.webContents.send('deletenote') }
+                },
+                {
+                    label: 'Search',
+                    accelerator: 'Cmd+f',
+                    click () {
+                        mainWindow.webContents.send('search')
+                    }
+                },
+                {
+                    label: 'Stop Search',
+                    accelerator: 'ESC',
+                    click () {
+                        mainWindow.webContents.send('search-stop')
+                    }
                 },
                 {type: 'separator'},
                 {
