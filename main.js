@@ -133,15 +133,16 @@ function setupMenu() {
                 {
                     label: 'Toggle SideMenu',
                     click () { mainWindow.webContents.send('toggle') },
-                    accelerator: 'Cmd+B'
+                    accelerator: 'Cmd+b'
                 },
                 {
                     label: 'New Note',
-                    click () { mainWindow.webContents.send('addnote') }
+                    click () { mainWindow.webContents.send('addnote') },
+                    accelerator: 'Cmd+n',
                 },
                 {
                     label: 'Delete Note',
-                    click () { mainWindow.webContents.send('deletenote') }
+                    click () { mainWindow.webContents.send('deletenote') },
                 },
                 {
                     label: 'Search',
@@ -155,6 +156,20 @@ function setupMenu() {
                     accelerator: 'ESC',
                     click () {
                         mainWindow.webContents.send('search-stop')
+                    }
+                },
+                {
+                    label: 'Next Note',
+                    accelerator: 'Cmd+Shift+n',
+                    click () {
+                        mainWindow.webContents.send('next-note')
+                    }
+                },
+                {
+                    label: 'Prev Note',
+                    accelerator: 'Cmd+Shift+p',
+                    click () {
+                        mainWindow.webContents.send('prev-note')
                     }
                 },
                 {type: 'separator'},

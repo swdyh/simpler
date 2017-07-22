@@ -42,7 +42,12 @@ let searchStop = () => {
     webview.stopFindInPage('clearSelection')
     searchForm.style.visibility = 'hidden'
 }
-
+let nextNote = () => {
+    webview.executeJavaScript("document.querySelector('ul.notes li.selected').nextSibling.nodeName == 'LI' && document.querySelector('ul.notes li.selected').nextSibling.click()")
+}
+let prevNote = () => {
+    webview.executeJavaScript("document.querySelector('ul.notes li.selected').previousSibling.nodeName == 'LI' && document.querySelector('ul.notes li.selected').previousSibling.click()")
+}
 onload = () => {
     webview = document.querySelector('webview')
     const loadstop = () => {
@@ -72,6 +77,8 @@ onload = () => {
     ipcRenderer.on('update-theme', (event, arg) => updateTheme(arg))
     ipcRenderer.on('search', (event, arg) => search(arg))
     ipcRenderer.on('search-stop', (event, arg) => searchStop(arg))
+    ipcRenderer.on('next-note', (event, arg) => nextNote(arg))
+    ipcRenderer.on('prev-note', (event, arg) => prevNote(arg))
 
     ipcRenderer.send('initial-config', {
         font: localStorage.configFont,
