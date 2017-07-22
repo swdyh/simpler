@@ -33,9 +33,19 @@
     #search-text {
       width: 100%;
     }
+    #dragarea {
+      position: absolute;
+      top: 0px;
+      z-index: 9;
+      height: 20px;
+      width: 100%;
+      -webkit-app-region: drag;
+      -webkit-user-select: none;
+    }
   </style>
   <body>
     <form id="search-form"><input type="text" id="search-text"/></form>
+    <div id="dragarea"></div>
     <webview src="https://app.simplenote.com/" class="hide"></webview>
     <script src="webview.js"></script>
   </body>
