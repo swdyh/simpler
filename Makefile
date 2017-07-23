@@ -8,7 +8,7 @@ $(eval ELECTRON_VERSION := $(shell electron -v | sed s/v//g ))
 
 build:
 	rm -rf packages/$(APP_VERSION)/darwin-x64/$(APP)
-	electron-packager . $(NAME) --platform=darwin --arch=x64  --electronVersion $(ELECTRON_VERSION) --icon=icon/icon.icns --overwrite
+	electron-packager . $(NAME) --platform=darwin --arch=x64  --electronVersion $(ELECTRON_VERSION) --icon=icon/icon.icns --overwrite --ignore packages
 	mkdir -p packages/$(APP_VERSION)/darwin-x64/
 	mv $(NAME)-darwin-x64/$(APP) packages/$(APP_VERSION)/darwin-x64/$(APP)
 	rm -rf  $(NAME)-darwin-x64
