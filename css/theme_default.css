@@ -14,4 +14,5 @@ body, .app { background-color: #fff !important; }
 .notes li:hover { background-color: #fafafa !important; }
 .notes li.selected {
     background: #f4f4f4 !important;
+    background-color: #f4f4f4 !important;
 }
