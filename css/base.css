@@ -15,7 +15,7 @@ div.wrapper, div.wrapper div.app { min-width: initial; }
 div.note { left: 0; top: 20px; right: 0px; }
 
 /* fix sidebar top position */
-div.sidebar ul.notes { top: 22px; }
+div.sidebar ul.notes { top: 25px; }
 
 /* fix statusbar(saved..) top position */
 ul.statusbar { padding-top: 0; }

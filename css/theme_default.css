@@ -13,6 +13,5 @@ body, .app { background-color: #fff !important; }
 /* sidebar selected/hover background */
 .notes li:hover { background-color: #fafafa !important; }
 .notes li.selected {
-    background: #eef3f8 !important;
-    background-color: #eef3f8 !important;
+    background: #f4f4f4 !important;
 }
