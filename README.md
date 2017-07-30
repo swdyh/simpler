@@ -1,23 +1,25 @@
-# SimplenoteElectro
+# Simpler
 
-SimplenoteElectro is much simpler simplenote.com app.
-It build on Electron. Currently we only support MacOS.
+Simpler is simpler simplenote.com app for MacOS.
 
 Features
-- Sidebar toggle
-- Font change
-- Background change
+- sidebar toggle
+- font change
+- color theme
 
 ## Download
+
+https://github.com/swdyh/simplenote-electro/releases/latest
 
 ## Build
 
 requirements
 - electron 1.6.6
+- electron-packager
 
 ```
 make build
 ```
 
 ## Lisence
-Apache License
+Apache License 2.0
