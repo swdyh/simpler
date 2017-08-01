@@ -16,6 +16,7 @@ https://github.com/swdyh/simplenote-electro/releases/latest
 requirements
 - electron 1.6.6
 - electron-packager
+- dotenv
 
 ```
 make build
