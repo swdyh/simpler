@@ -8,7 +8,7 @@ $(eval APP_VERSION := $(shell ruby -rjson -e 'puts JSON.parse(File.read("package
 $(eval ELECTRON_VERSION := $(shell electron -v | sed s/v//g ))
 
 build:
-	dotenv scripts/build.sh
+	godotenv scripts/build.sh
 dev:
 	$(eval dir := $(shell pwd))
 	osascript -l JavaScript -e "Application('Terminal').doScript('cd $(dir) && electron .')"
