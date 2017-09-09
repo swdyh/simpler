@@ -79,12 +79,13 @@ onload = () => {
     ipcRenderer.on('search-stop', (event, arg) => searchStop(arg))
     ipcRenderer.on('next-note', (event, arg) => nextNote(arg))
     ipcRenderer.on('prev-note', (event, arg) => prevNote(arg))
-
+    ipcRenderer.on('window-moved', (event, arg) => localStorage.bounds = JSON.stringify(arg))
+    ipcRenderer.on('window-resize', (event, arg) => localStorage.bounds = JSON.stringify(arg))
     ipcRenderer.send('initial-config', {
         font: localStorage.configFont,
-        theme: localStorage.configTheme
+        theme: localStorage.configTheme,
+        bounds: localStorage.bounds ? JSON.parse(localStorage.bounds) : null
     })
-
 
     searchForm = document.querySelector('#search-form')
     searchForm.addEventListener('submit', (ev) => {

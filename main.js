@@ -10,7 +10,8 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 950,
         height: 600,
-        titleBarStyle: 'hidden'
+        titleBarStyle: 'hidden',
+        show: false
     })
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
@@ -18,12 +19,21 @@ function createWindow() {
         slashes: true
     }))
     mainWindow.on('closed', () => mainWindow = null)
+    mainWindow.on('moved', () => {
+        mainWindow.webContents.send('window-moved', mainWindow.getBounds())
+    })
+    mainWindow.on('resize', () => {
+        mainWindow.webContents.send('window-resize', mainWindow.getBounds())
+    })
     ipcMain.on('initial-config', (event, arg) => {
         checkMenu(arg.font)
         checkMenu(arg.theme)
+        if (arg.bounds) {
+            mainWindow.setBounds(arg.bounds)
+        }
+        mainWindow.show()
     })
 }
-
 
 function findMenu(id, menu) {
     if (menu && menu.id == id) {
@@ -176,6 +186,12 @@ function setupMenu() {
                 {
                     label: 'Sign Out',
                     click () { mainWindow.webContents.send('signout') }
+                },
+                {
+                    label: 'test',
+                    click () {
+                        console.log( mainWindow.getBounds() )
+                    }
                 }
             ]
         }
