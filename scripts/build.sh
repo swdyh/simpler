@@ -24,7 +24,7 @@ electron-packager . $NAME \
                   --electronVersion $ELECTRON_VERSION \
                   --icon=../icon/icon.icns \
                   --overwrite \
-                  --ignore '(packages|scripts|icon|Makefile|\.DS_Store|\.gitignore|\.eslintrc.json|\.env)' $SIGN_OPT \
+                  --ignore '(\.DS_Store|\.gitignore|\.eslintrc.json|\.env)' $SIGN_OPT \
                   --app-bundle-id='io.github.swdyh.simpler' \
                   --app-category-type='public.app-category.utilities'
 
