@@ -142,13 +142,13 @@ function setupMenu() {
             submenu: [
                 {
                     label: 'Toggle SideMenu',
+                    accelerator: 'Cmd+b',
                     click () { mainWindow.webContents.send('toggle') },
-                    accelerator: 'Cmd+b'
                 },
                 {
                     label: 'New Note',
-                    click () { mainWindow.webContents.send('addnote') },
                     accelerator: 'Cmd+n',
+                    click () { mainWindow.webContents.send('addnote') }
                 },
                 {
                     label: 'Delete Note',
@@ -157,41 +157,27 @@ function setupMenu() {
                 {
                     label: 'Search',
                     accelerator: 'Cmd+f',
-                    click () {
-                        mainWindow.webContents.send('search')
-                    }
+                    click () { mainWindow.webContents.send('search') }
                 },
                 {
                     label: 'Stop Search',
                     accelerator: 'ESC',
-                    click () {
-                        mainWindow.webContents.send('search-stop')
-                    }
+                    click () { mainWindow.webContents.send('search-stop') }
                 },
                 {
                     label: 'Next Note',
                     accelerator: 'Cmd+Shift+n',
-                    click () {
-                        mainWindow.webContents.send('next-note')
-                    }
+                    click () { mainWindow.webContents.send('next-note') }
                 },
                 {
                     label: 'Prev Note',
                     accelerator: 'Cmd+Shift+p',
-                    click () {
-                        mainWindow.webContents.send('prev-note')
-                    }
+                    click () { mainWindow.webContents.send('prev-note') }
                 },
                 {type: 'separator'},
                 {
-                    label: 'Sign Out',
-                    click () { mainWindow.webContents.send('signout') }
-                },
-                {
-                    label: 'test',
-                    click () {
-                        console.log( mainWindow.getBounds() )
-                    }
+                     label: 'Sign Out',
+                     click () { mainWindow.webContents.send('signout') }
                 }
             ]
         }
