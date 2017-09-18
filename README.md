@@ -1,5 +1,7 @@
 # Simpler
 
+![screencap](https://raw.githubusercontent.com/swdyh/simpler/master/screencaptures/sc001.png)
+
 Simpler is simpler simplenote.com app for MacOS.
 
 Features
