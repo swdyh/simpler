@@ -1,19 +1,10 @@
 .DEFAULT_GOAL := build
-NAME := $(shell ruby -rjson -e 'puts JSON.parse(File.read("package.json"))["name"]')
-APP := $(NAME).app
-ICONSET := icon.iconset
-ARCH := x64
-PLATFORM=darwin
-$(eval APP_VERSION := $(shell ruby -rjson -e 'puts JSON.parse(File.read("package.json"))["version"]'))
-$(eval ELECTRON_VERSION := $(shell electron -v | sed s/v//g ))
 
 build:
 	godotenv scripts/build.sh
 dev:
 	$(eval dir := $(shell pwd))
-	osascript -l JavaScript -e "Application('Terminal').doScript('cd $(dir) && electron .')"
-run: build
-	open packages/$(APP_VERSION)/$(PLATFORM)-$(ARCH)/$(APP)
+	osascript -l JavaScript -e "Application('Terminal').doScript('cd $(dir)/src && electron .')"
 clean:
 	rm -rf packages/$(APP_VERSION)
 icns:

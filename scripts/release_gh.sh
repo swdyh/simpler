@@ -1,10 +1,10 @@
 #!/bin/sh
 
-NAME=`ruby -rjson -e 'puts JSON.parse(File.read("package.json"))["name"]'`
+NAME=`ruby -rjson -e 'puts JSON.parse(File.read("src/package.json"))["name"]'`
 APP=$NAME.app
 ARCH=x64
 PLATFORM=darwin
-APP_VERSION=`ruby -rjson -e 'puts JSON.parse(File.read("package.json"))["version"]'`
+APP_VERSION=`ruby -rjson -e 'puts JSON.parse(File.read("src/package.json"))["version"]'`
 f="$NAME-$PLATFORM-$ARCH-$APP_VERSION.zip"
 cd packages/$APP_VERSION/$PLATFORM-$ARCH
 zip -r $f $NAME.app

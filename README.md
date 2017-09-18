@@ -14,7 +14,7 @@ https://github.com/swdyh/simplenote-electro/releases/latest
 ## Build
 
 requirements
-- electron 1.6.6
+- electron 1.6.11
 - electron-packager
 - godotenv
 
